@@ -1,0 +1,104 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; /* 1 opera */
+    display: table; /* 2 no block */
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}
+
+@mixin container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  ($grid-gutter / 2);
+  padding-right: ($grid-gutter / 2);
+  @include clearfix();
+}
+
+@mixin make-row() {
+  margin-left:  ($grid-gutter / -2);
+  margin-right: ($grid-gutter / -2);
+  @include clearfix();
+}
+
+@mixin calculate-grid-x($grid-columns, $grid-gutter) {
+	$denominator : $grid-columns; // 12 = 12
+	$numerator: $grid-columns; // 12 = 12
+	@while $denominator > 0 {
+		@if floor($grid-columns / $denominator) == ($grid-columns / $denominator) {
+			@while $numerator > 0 { //12--
+				.col-x-#{$numerator}\2f #{$denominator} {	width: percentage($numerator / $denominator);	}
+				.col-x-push-#{$numerator}\2f #{$denominator} {	left: percentage($numerator / $denominator);	}
+				.col-x-pull-#{$numerator}\2f #{$denominator} {	right: percentage($numerator / $denominator);	}
+				$numerator: $numerator - 1;
+			}	
+		}	
+		$numerator: $denominator - 1;	
+		$denominator: $denominator - 1;
+	}
+}
+
+@mixin calculate-grid-s($grid-columns, $grid-gutter) {
+  @media (min-width: $screen-s-min) {
+    $denominator : $grid-columns; 
+    $numerator: $grid-columns; 
+    @while $denominator > 0 {
+      @if floor($grid-columns / $denominator) == ($grid-columns / $denominator) {
+        @while $numerator > 0 { //12--
+          @media (min-width: $screen-s-min) { .col-s-#{$numerator}\2f #{$denominator} { width: percentage($numerator / $denominator); } }
+          @media (min-width: $screen-s-min) { .col-s-push-#{$numerator}\2f #{$denominator} {  left: percentage($numerator / $denominator);  } }
+          @media (min-width: $screen-s-min) { .col-s-pull-#{$numerator}\2f #{$denominator} {  right: percentage($numerator / $denominator); } }
+          $numerator: $numerator - 1;
+        } 
+      } 
+      $numerator: $denominator - 1; 
+      $denominator: $denominator - 1;
+    }
+  }
+}
+
+@mixin calculate-grid-m($grid-columns, $grid-gutter) {
+  @media (min-width: $screen-m-min) {
+    $denominator : $grid-columns; 
+    $numerator: $grid-columns; 
+    @while $denominator > 0 {
+      @if floor($grid-columns / $denominator) == ($grid-columns / $denominator) {
+        @while $numerator > 0 { //12--
+          @media (min-width: $screen-m-min) { .col-m-#{$numerator}\2f #{$denominator} { width: percentage($numerator / $denominator); } }
+          @media (min-width: $screen-m-min) { .col-m-push-#{$numerator}\2f #{$denominator} {  left: percentage($numerator / $denominator);  } }
+          @media (min-width: $screen-m-min) { .col-m-pull-#{$numerator}\2f #{$denominator} {  right: percentage($numerator / $denominator); } }
+          $numerator: $numerator - 1;
+        } 
+      } 
+      $numerator: $denominator - 1; 
+      $denominator: $denominator - 1;
+    }
+  }
+}
+
+@mixin calculate-grid-l($grid-columns, $grid-gutter) {
+  @media (min-width: $screen-l-min) {
+    $denominator : $grid-columns; 
+    $numerator: $grid-columns; 
+    @while $denominator > 0 {
+      @if floor($grid-columns / $denominator) == ($grid-columns / $denominator) {
+        @while $numerator > 0 { //12--
+          @media (min-width: $screen-l-min) { .col-l-#{$numerator}\2f #{$denominator} { width: percentage($numerator / $denominator); } }
+          @media (min-width: $screen-l-min) { .col-l-push-#{$numerator}\2f #{$denominator} {  left: percentage($numerator / $denominator);  } }
+          @media (min-width: $screen-l-min) { .col-l-pull-#{$numerator}\2f #{$denominator} {  right: percentage($numerator / $denominator); } }
+          $numerator: $numerator - 1;
+        } 
+      } 
+      $numerator: $denominator - 1; 
+      $denominator: $denominator - 1;
+    }
+  }
+}

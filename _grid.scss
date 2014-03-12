@@ -1,0 +1,15 @@
+
+*, *:before, *:after {	@include box-sizing(border-box);}
+
+.container { @include container-fixed(); width:100%;}
+@media (min-width: $screen-s-min) { .container {  width: $container-s; } }
+@media (min-width: $screen-m-min) { .container {  width: $container-m; } }
+@media (min-width: $screen-l-min) { .container {  width: $container-l; } }
+
+.row {	@include make-row();}
+[class^="col-"] { width:100%; position: relative; float: left; min-height: 1px;padding-left:($grid-gutter / 2); padding-right:($grid-gutter / 2);}
+@include calculate-grid-x($grid-columns, $grid-gutter);
+@include calculate-grid-s($grid-columns, $grid-gutter);
+@include calculate-grid-m($grid-columns, $grid-gutter);
+@include calculate-grid-l($grid-columns, $grid-gutter);
+
