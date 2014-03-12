@@ -1,5 +1,6 @@
 Use it like this:
 Default 12 cols and resulting fractions x/12, x/6, x/4, x/3, x/2, x/1
+x (mini or mobile), s (small or tablets), m (medium or large tablets, small desktops), l (large desktops)
 
 <div class=“container”>
 	<div class=“row”>
